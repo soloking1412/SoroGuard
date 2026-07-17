@@ -1,4 +1,5 @@
 import Diagram from "./diagram";
+import Logo from "./logo";
 import ScrollReveal from "./scroll-reveal";
 
 const REPO = "https://github.com/soloking1412/soroguard";
@@ -17,6 +18,7 @@ export default function Home() {
       <nav className="nav">
         <div className="wrap nav-inner">
           <a className="brand" href="#top">
+            <Logo />
             SoroGuard
           </a>
           <div className="nav-links">

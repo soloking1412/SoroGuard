@@ -129,6 +129,9 @@ p strong {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 600;
   color: var(--text);
   letter-spacing: -0.01em;
