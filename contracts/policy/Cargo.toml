@@ -1,0 +1,18 @@
+[package]
+name = "soroguard-policy"
+description = "Smart-account policy that scopes what a keeper may do on a user's account."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+ed25519-dalek = "2.2.0"

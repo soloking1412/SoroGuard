@@ -1,0 +1,17 @@
+[package]
+name = "soroguard-guardian"
+description = "Stores user protection rules and re-derives their triggers from on-chain state."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }

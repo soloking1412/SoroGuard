@@ -1,0 +1,18 @@
+# Copy to soroguard.toml and edit. The keeper's secret is never read from here; export it as
+# SOROGUARD_KEEPER_SECRET so a config can be shared or committed without leaking a key.
+
+rpc_url = "https://soroban-testnet.stellar.org"
+network_passphrase = "Test SDF Network ; September 2015"
+
+# The guardian contract this keeper watches.
+guardian_id = "CBQHNAXSI55GX2GN6D67GK7BHVPSLJUGZQEU7WJ5LKR5PNUCGLIMAO4K"
+
+# Rule ids to watch. Split the set across several keepers if you like; the guardian is the
+# same either way.
+rules = [0, 1, 2]
+
+# Seconds between sweeps.
+interval_secs = 10
+
+# How long a submitted rule authorization stays valid, in ledgers.
+auth_ttl_ledgers = 60

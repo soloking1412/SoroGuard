@@ -1,0 +1,26 @@
+[package]
+name = "soroguard-keeper"
+description = "Off-chain watcher that spots triggered rules and submits the protective transaction."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "soroguard-keeper"
+path = "src/main.rs"
+
+[dependencies]
+stellar-rpc-client = "27.0.0"
+stellar-xdr = { version = "27.0.0", features = ["std", "serde", "base64"] }
+stellar-strkey = "0.0.16"
+ed25519-dalek = "2.2.0"
+sha2 = "0.10"
+hex = "0.4"
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "signal"] }
+toml = "0.9"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
