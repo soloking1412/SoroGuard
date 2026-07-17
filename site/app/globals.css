@@ -434,7 +434,7 @@ p strong {
   white-space: nowrap;
 }
 
-.badge-testnet {
+.badge-done {
   color: var(--accent);
   background: var(--accent-bg);
   border-color: var(--accent-dim);

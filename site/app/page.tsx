@@ -3,17 +3,11 @@ import ScrollReveal from "./scroll-reveal";
 
 const REPO = "https://github.com/soloking1412/soroguard";
 const GITHUB = "https://github.com/soloking1412";
-const AVAGUARD = "https://github.com/soloking1412/avaguard-avax";
-const STYLUS = "https://github.com/soloking1412/Stylus-Toolkit";
+const AUDIT = "https://audits.sherlock.xyz/watson/soloking";
 const EMAIL = "maheswar141203@gmail.com";
 
-// Audit profiles. Fill each href before the site goes live; a platform with an empty href
-// renders as plain text rather than a dead link.
-const AUDIT_PROFILES: { name: string; href: string }[] = [
-  { name: "Sherlock", href: "https://audits.sherlock.xyz/watson/soloking" },
-  { name: "Code4rena", href: "" },
-  { name: "Immunefi", href: "" },
-];
+// External links open in a new tab. In-page "#" anchors stay in this tab.
+const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export default function Home() {
   return (
@@ -33,7 +27,9 @@ export default function Home() {
             <a href="#status" data-optional>
               Status
             </a>
-            <a href={REPO}>GitHub</a>
+            <a href={REPO} {...ext}>
+              GitHub
+            </a>
           </div>
         </div>
       </nav>
@@ -53,7 +49,7 @@ export default function Home() {
             <a className="btn btn-primary" href="#architecture">
               Read the architecture
             </a>
-            <a className="btn btn-ghost" href={REPO}>
+            <a className="btn btn-ghost" href={REPO} {...ext}>
               View on GitHub
             </a>
           </div>
@@ -236,28 +232,34 @@ export default function Home() {
             <h2>Built in the open.</h2>
             <div className="status-list">
               <div className="status-row">
-                <span className="badge badge-testnet">Testnet</span>
+                <span className="badge badge-done">Implemented</span>
                 <span className="label">Guardian contract and policy model</span>
               </div>
               <div className="status-row">
-                <span className="badge badge-progress">In progress</span>
-                <span className="label">Keeper client</span>
+                <span className="badge badge-done">Implemented</span>
+                <span className="label">
+                  All three rule types: stop-loss, health-factor, oracle-deviation
+                </span>
               </div>
               <div className="status-row">
                 <span className="badge badge-progress">In progress</span>
-                <span className="label">Stop-loss and health-factor rules</span>
+                <span className="label">Keeper client, submit path not yet run on live RPC</span>
               </div>
               <div className="status-row">
-                <span className="badge badge-testnet">Testnet</span>
-                <span className="label">Oracle-deviation rule</span>
+                <span className="badge badge-planned">Next</span>
+                <span className="label">Testnet deployment</span>
               </div>
               <div className="status-row">
                 <span className="badge badge-planned">Planned</span>
-                <span className="label">Mainnet, after audit</span>
+                <span className="label">Mainnet, after an audit</span>
               </div>
             </div>
             <p className="caption" style={{ marginTop: "1.25rem" }}>
-              Follow the <a href={REPO}>repo</a> for progress.
+              Follow the{" "}
+              <a href={REPO} {...ext}>
+                repo
+              </a>{" "}
+              for progress.
             </p>
           </div>
         </section>
@@ -268,8 +270,8 @@ export default function Home() {
             <h2>Maheswaran Velmurugan, developer and auditor.</h2>
             <p>
               I build blockchain developer tooling and DeFi protocols, and I audit them. On the
-              security side I have 15+ confirmed High and Medium findings across {auditText()},
-              including lending and vault protocols.
+              security side I have 15+ confirmed High and Medium findings, including lending and
+              vault protocols.
             </p>
             <p>
               SoroGuard is a rebuild of avaguard, a circuit-breaker and invariant-monitoring
@@ -279,9 +281,12 @@ export default function Home() {
               Foundation grant. I&apos;ve also delivered a grant from the Stacks Foundation.
             </p>
             <div className="links-inline">
-              <a href={GITHUB}>GitHub</a>
-              <a href={AVAGUARD}>avaguard</a>
-              <a href={STYLUS}>Stylus-Toolkit</a>
+              <a href={AUDIT} {...ext}>
+                Audit profile
+              </a>
+              <a href={GITHUB} {...ext}>
+                GitHub
+              </a>
             </div>
           </div>
         </section>
@@ -290,8 +295,12 @@ export default function Home() {
       <footer>
         <div className="wrap">
           <div className="footer-links">
-            <a href={REPO}>GitHub</a>
-            <a href={`${REPO}#readme`}>Docs</a>
+            <a href={REPO} {...ext}>
+              GitHub
+            </a>
+            <a href={`${REPO}#readme`} {...ext}>
+              Docs
+            </a>
             <a href={`mailto:${EMAIL}`}>Contact</a>
           </div>
           <p className="fine">
@@ -303,17 +312,4 @@ export default function Home() {
       </footer>
     </>
   );
-}
-
-/** The audit platforms, as links where a profile URL is set and plain text otherwise. */
-function auditText() {
-  return AUDIT_PROFILES.map((p, i) => {
-    const sep = i === 0 ? "" : i === AUDIT_PROFILES.length - 1 ? " and " : ", ";
-    return (
-      <span key={p.name}>
-        {sep}
-        {p.href ? <a href={p.href}>{p.name}</a> : p.name}
-      </span>
-    );
-  });
 }
